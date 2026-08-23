@@ -158,7 +158,7 @@ Place both CSV files inside the `data/` directory:
 ```text
 Handwritten-Digit-Recognition/
 │
-├── data/
+├── data/                # Download separately from Kaggle
 │   ├── mnist_train.csv
 │   └── mnist_test.csv
 │
