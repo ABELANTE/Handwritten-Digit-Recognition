@@ -41,7 +41,7 @@ The CNN achieved the best performance with approximately **99.23% test accuracy*
 ```text
 Handwritten-Digit-Recognition/
 │
-├── data/
+├── data/                # Download separately from Kaggle
 │   ├── mnist_train.csv
 │   └── mnist_test.csv
 │
