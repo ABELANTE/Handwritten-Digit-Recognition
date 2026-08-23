@@ -16,15 +16,17 @@ The objective is to understand how different neural network architectures perfor
 
 Handwritten digit recognition is a multi-class image classification problem where the model identifies digits from **0 to 9**.
 
-In this project, the MNIST dataset is used to train and evaluate three models. The models are compared based on their test accuracy to understand the performance improvement obtained by using deeper and image-specific architectures.
+In this project, the MNIST dataset is used to train and compare three different neural network architectures. The models are evaluated and compared to understand how performance changes as the network architecture becomes more suitable for image data.
 
-The CNN achieved the best performance with approximately **99.23% test accuracy**.
+The CNN achieved the best evaluation accuracy among the three models.
+
+> **Note:** In this project, the MNIST test dataset (`mnist_test.csv`) is used as the validation dataset during model training and is also used for final evaluation. Therefore, the reported evaluation accuracy should not be interpreted as performance on a completely unseen test dataset.
 
 ---
 
 ## 🎯 Objectives
 
-* Understand the MNIST dataset.
+* Understand the structure of the MNIST dataset.
 * Perform data exploration and preprocessing.
 * Normalize image pixel values.
 * Convert flattened pixel data into image dimensions.
@@ -41,7 +43,7 @@ The CNN achieved the best performance with approximately **99.23% test accuracy*
 ```text
 Handwritten-Digit-Recognition/
 │
-├── data/                # Download separately from Kaggle
+├── data/                         # Download separately from Kaggle
 │   ├── mnist_train.csv
 │   └── mnist_test.csv
 │
@@ -56,14 +58,14 @@ Handwritten-Digit-Recognition/
 
 ### Directory Description
 
-| Path               | Description                                      |
-| ------------------ | ------------------------------------------------ |
-| `data/`            | MNIST training and testing CSV files             |
-| `notebooks/`       | Jupyter Notebook containing the complete project |
-| `requirements.txt` | Required Python dependencies                     |
-| `.gitignore`       | Files excluded from Git tracking                 |
-| `LICENSE`          | Project license                                  |
-| `README.md`        | Project documentation                            |
+| Path               | Description                                                            |
+| ------------------ | ---------------------------------------------------------------------- |
+| `data/`            | MNIST training and testing CSV files. Download separately from Kaggle. |
+| `notebooks/`       | Jupyter Notebook containing the complete project                       |
+| `requirements.txt` | Required Python dependencies                                           |
+| `.gitignore`       | Files excluded from Git tracking                                       |
+| `LICENSE`          | Project license                                                        |
+| `README.md`        | Project documentation                                                  |
 
 ---
 
@@ -100,13 +102,15 @@ Pixel values range from `0` to `255`, while the label represents a digit from `0
 
 # ⚙️ Installation & Setup
 
+Follow the steps below to run the project locally.
+
 ## 1. Clone the Repository
 
 ```bash
 git clone https://github.com/harshalk2022/Handwritten-Digit-Recognition.git
 ```
 
-Navigate to the project:
+Navigate to the project directory:
 
 ```bash
 cd Handwritten-Digit-Recognition
@@ -132,17 +136,23 @@ source venv/Scripts/activate
 venv\Scripts\activate
 ```
 
+After activation, the terminal should show something similar to:
+
+```text
+(venv)
+```
+
 ---
 
 ## 3. Download the Dataset
 
 The dataset is **required** to run the notebook and is not downloaded automatically.
 
-Download it from Kaggle:
+Download the dataset from Kaggle:
 
 **[MNIST in CSV](https://www.kaggle.com/datasets/oddrationale/mnist-in-csv)**
 
-After downloading, extract the following files:
+After downloading and extracting the dataset, you should have:
 
 ```text
 mnist_train.csv
@@ -151,26 +161,29 @@ mnist_test.csv
 
 ---
 
-## 4. Place the Dataset
+## 4. Place the Dataset in the `data` Folder
 
-Place both CSV files inside the `data/` directory:
+Place both CSV files inside the project's `data/` directory.
+
+The structure should look like:
 
 ```text
 Handwritten-Digit-Recognition/
 │
-├── data/                # Download separately from Kaggle
+├── data/
 │   ├── mnist_train.csv
 │   └── mnist_test.csv
 │
 ├── notebooks/
 │   └── handwritten_digit_recognition.ipynb
 │
-├── requirements.txt
+├── .gitignore
+├── LICENSE
 ├── README.md
-└── LICENSE
+└── requirements.txt
 ```
 
-The notebook expects the files at:
+The notebook expects the dataset files at:
 
 ```text
 data/mnist_train.csv
@@ -178,6 +191,8 @@ data/mnist_test.csv
 ```
 
 **Make sure the filenames and folder location are correct before running the notebook.**
+
+> The `data/` directory is excluded from Git using `.gitignore`, so the dataset must be downloaded separately.
 
 ---
 
@@ -191,7 +206,7 @@ pip install -r requirements.txt
 
 ---
 
-## 6. Run the Notebook
+## 6. Run the Jupyter Notebook
 
 Start Jupyter Notebook:
 
@@ -209,13 +224,76 @@ Run the notebook cells sequentially.
 
 ---
 
-# 🔍 Data Preprocessing
+# 🔄 Project Workflow
 
-The dataset contains flattened `28 × 28` images as 784 pixel values.
+```text
+MNIST CSV Dataset
+       ↓
+Load Dataset
+       ↓
+Data Exploration
+       ↓
+Check Missing Values
+       ↓
+Separate Features & Labels
+       ↓
+Normalize Pixel Values
+       ↓
+Reshape Images
+       ↓
+One-Hot Encode Labels
+       ↓
+Train Models
+       │
+       ├── Single-Layer Neural Network
+       │
+       ├── ANN
+       │
+       └── CNN
+       ↓
+Evaluate Models
+       ↓
+Compare Accuracy
+       ↓
+Visualize Results
+       ↓
+Select Best Performing Model
+```
 
-The following preprocessing steps are performed:
+---
 
-### 1. Separate Features and Labels
+# 🔍 Data Exploration
+
+The notebook performs basic exploration of the dataset, including:
+
+* Dataset shape
+* Column names
+* Data types
+* Missing-value checking
+* Sample records
+* Training and testing dataset inspection
+
+The training dataset contains:
+
+```text
+60,000 rows × 785 columns
+```
+
+and the testing dataset contains:
+
+```text
+10,000 rows × 785 columns
+```
+
+---
+
+# ⚙️ Data Preprocessing
+
+The dataset contains flattened `28 × 28` images represented by 784 pixel values.
+
+The following preprocessing steps are performed.
+
+## 1. Separate Features and Labels
 
 The `label` column is separated from the pixel values.
 
@@ -227,7 +305,9 @@ X_test = df_test.drop("label", axis=1).values
 y_test = df_test["label"].values
 ```
 
-### 2. Normalize Pixel Values
+---
+
+## 2. Normalize Pixel Values
 
 Pixel values are converted from `0–255` to `0–1`.
 
@@ -236,18 +316,22 @@ X_train = X_train.astype("float32") / 255.0
 X_test = X_test.astype("float32") / 255.0
 ```
 
-### 3. Reshape Images
+Normalization helps the neural networks train more effectively.
 
-For image-based processing, the flattened pixels are reshaped into `28 × 28` images.
+---
 
-For CNN:
+## 3. Reshape Images
+
+The flattened pixel values are reshaped into image dimensions.
+
+For the CNN:
 
 ```python
 X_train_cnn = X_train.reshape(-1, 28, 28, 1)
 X_test_cnn = X_test.reshape(-1, 28, 28, 1)
 ```
 
-The final CNN input shape is:
+The CNN input shape is:
 
 ```text
 28 × 28 × 1
@@ -255,20 +339,20 @@ The final CNN input shape is:
 
 where `1` represents the grayscale channel.
 
-### 4. Encode Labels
+---
 
-The digit labels are converted into one-hot encoded vectors:
+## 4. One-Hot Encode Labels
+
+The digit labels are converted into one-hot encoded vectors.
 
 ```python
 y_train_cat = to_categorical(y_train, 10)
 y_test_cat = to_categorical(y_test, 10)
 ```
 
-For example:
+For example, digit `5` becomes:
 
 ```text
-Digit 5
-↓
 [0, 0, 0, 0, 0, 1, 0, 0, 0, 0]
 ```
 
@@ -302,9 +386,9 @@ Epochs    : 5
 Batch Size: 32
 ```
 
-### Test Accuracy
+### Evaluation Accuracy
 
-**90.79%**
+**90.88%**
 
 ---
 
@@ -338,15 +422,15 @@ Epochs    : 5
 Batch Size: 32
 ```
 
-### Test Accuracy
+### Evaluation Accuracy
 
-**97.62%**
+**97.70%**
 
 ---
 
 ## 3. Convolutional Neural Network (CNN)
 
-The CNN uses convolution and pooling layers to learn spatial features from the handwritten digit images.
+The CNN uses convolution and pooling layers to learn spatial features from handwritten digit images.
 
 ### Architecture
 
@@ -383,19 +467,19 @@ Batch Size: 32
 Dropout   : 0.5
 ```
 
-### Test Accuracy
+### Evaluation Accuracy
 
-**99.23%**
+**99.07%**
 
 ---
 
 # 📈 Model Comparison
 
-| Model                       | Type             | Test Accuracy |
-| --------------------------- | ---------------- | ------------: |
-| Single-Layer Neural Network | Linear / Softmax |    **90.79%** |
-| ANN                         | Fully Connected  |    **97.62%** |
-| CNN                         | Convolutional    |    **99.23%** |
+| Model                       | Type             | Evaluation Accuracy |
+| --------------------------- | ---------------- | ------------------: |
+| Single-Layer Neural Network | Linear / Softmax |          **90.88%** |
+| ANN                         | Fully Connected  |          **97.70%** |
+| CNN                         | Convolutional    |          **99.07%** |
 
 ### Result
 
@@ -403,7 +487,11 @@ Dropout   : 0.5
 CNN > ANN > Single-Layer Neural Network
 ```
 
-The CNN achieved the highest accuracy because convolutional layers are better suited for learning spatial patterns and local features in images.
+The CNN achieved the highest evaluation accuracy among the three models.
+
+This demonstrates the advantage of convolutional layers for image classification, as CNNs can learn spatial patterns and local features from images.
+
+> **Evaluation note:** The same MNIST test dataset is used as validation data during training and for final evaluation in this project. Therefore, these values should not be considered performance on a completely unseen test dataset.
 
 ---
 
@@ -418,51 +506,13 @@ The notebook contains visualizations for:
 * Model accuracy comparison
 * Sample digit predictions
 
-These visualizations help analyze model learning and compare the performance of the different architectures.
-
----
-
-🔄 Project Workflow
-
-```
-MNIST CSV Dataset
-       ↓
-Load Dataset
-       ↓
-Data Exploration
-       ↓
-Check Missing Values
-       ↓
-Separate Features & Labels
-       ↓
-Normalize Pixel Values
-       ↓
-Reshape Images
-       ↓
-One-Hot Encode Labels
-       ↓
-Train Models
-       │
-       ├── Single-Layer Neural Network
-       │
-       ├── ANN
-       │
-       └── CNN
-       ↓
-Evaluate Models
-       ↓
-Compare Accuracy
-       ↓
-Visualize Results
-       ↓
-Select Best Performing Model
-```
+These visualizations help analyze the training process and compare the performance of the different models.
 
 ---
 
 # 🛠️ Technologies Used
 
-* **Python**
+* **Python 3.11**
 * **NumPy**
 * **Pandas**
 * **Matplotlib**
@@ -479,8 +529,9 @@ Select Best Performing Model
 # 💡 Key Learnings
 
 * Understanding the structure of image datasets.
-* Converting flattened pixel data into image tensors.
-* Image pixel normalization.
+* Representing `28 × 28` images using 784 pixel values.
+* Normalizing image pixel values.
+* Reshaping flattened data into image tensors.
 * One-hot encoding for multi-class classification.
 * Building neural networks using TensorFlow/Keras.
 * Understanding fully connected neural networks.
